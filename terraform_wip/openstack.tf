@@ -20,7 +20,7 @@ variable "flavor_name" {
 variable "key_name" {
   default = "CircleCI Master"
 }
-
+/*
 resource "openstack_networking_network_v2" "network" {
   name           = "ae-${var.env_name}-net"
   admin_state_up = "true"
@@ -93,3 +93,4 @@ resource "openstack_compute_instance_v2" "basic" {
     name = "ext-net"
   }
 }
+*/
