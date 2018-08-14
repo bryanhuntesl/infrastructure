@@ -152,10 +152,14 @@
         creates: "/usr/local/lib/libsodium.so.{{ libsodium_module_version }}"
       tags:
         - libsodium
-      register: installed
+      register: libsodium_install
 
     - name: Run ldconfig
       command: ldconfig
       tags:
         - libsodium
-      when: installed.results[2].rc == 0 #workaround for ansible-lint [ANSIBLE0012] Commands should not change things if nothing needs doing ansible/setup.yml:114. results[2] point to results from "Install libsodium -> make install`
+      # Workaround for ansible-lint [ANSIBLE0012]
+      # results[2] points to results from "Install libsodium" -> make install
+      when:
+        - libsodium_install.changed
+        - libsodium_install.results[2].rc == 0
