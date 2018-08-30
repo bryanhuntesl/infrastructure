@@ -69,7 +69,6 @@ data "template_file" "user_data" {
     color             = "${var.color}"
     env               = "${var.env}"
     epoch_package     = "${var.epoch["package"]}"
-    epoch_beneficiary = "${var.epoch["beneficiary"]}"
   }
 }
 
